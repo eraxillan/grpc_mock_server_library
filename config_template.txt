@@ -1,0 +1,22 @@
+<!--
+{
+    "grpc.userOrderService.ListOrders": {
+        "json":     "path/to/list_orders_response.txt",
+        "override": "path/to/list_orders_request.txt"
+    }
+}
+-->
+
+<root>
+    <dataset name="fixed_price_1234">
+        <package name="grpc">
+            <service name="userOrderService">
+                <!-- Получение списка заказов -->
+                <method name="ListOrders" >
+                    <!-- <full path="path/to/list_orders_response.txt" /> -->
+                    <partial path="path/to/list_orders_request.txt" />
+                </method>
+            </service>
+        </package>
+    </dataset>
+</root>

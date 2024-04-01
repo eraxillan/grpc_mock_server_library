@@ -1,0 +1,19 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
+  "name": "grpc-mock-server",
+  "version": "1.0.0",
+  "description": "gRPC mock server which allow to replace server responses to user-defined ones",
+  "dependencies": [
+    "python3",
+    "grpc",
+    "protobuf",
+    "spdlog",
+    "python3",
+    "cmakerc",
+    "sqlitecpp",
+    "pugixml",
+    "openssl",
+    "argparse",
+    "grpc-mock-server-common"
+  ]
+}
