@@ -75,33 +75,6 @@ file(MAKE_DIRECTORY ${GRPC_PROTO_COPY_DIR})
 set(GOOGLE_APIS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/googleapis" CACHE INTERNAL "")
 set(GRPC_GATEWAY_PATH "${CMAKE_CURRENT_SOURCE_DIR}/grpc-gateway" CACHE INTERNAL "")
 
-add_executable(grpc_mock_server_example "src/example/main.cc")
-
-target_include_directories(
-    grpc_mock_server_example
-    PRIVATE
-    ${CMRC_INCLUDE_DIR}
-    "src/library"
-)
-
-target_link_libraries(
-    grpc_mock_server_example
-    grpcmockserver::rc
-    spdlog::spdlog
-    argparse::argparse
-    "grpc-mock-server"
-    grpc_mock_server::grpc_mock_server_common
-)
-
-set(CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
-
-set_property(TARGET grpc_mock_server_example PROPERTY CXX_STANDARD 20)
-set_property(TARGET grpc_mock_server_example PROPERTY CXX_STANDARD_REQUIRED ON)
-if ((MSVC) AND (MSVC_VERSION GREATER_EQUAL 1914))
-    target_compile_options(grpc_mock_server_example PUBLIC "/Zc:__cplusplus")
-endif()
-
 find_package(CMakeRC CONFIG REQUIRED)
 cmrc_add_resource_library(
     grpc_mock_server_library_resources
@@ -205,13 +178,13 @@ list(
 add_library(
     grpc-mock-server
     SHARED
-    "src/library/business_logic.h"
-    "src/library/business_logic.cc"
-    "src/library/grpc_mock_server_library.h"
-    "src/library/grpc_mock_server_library.cpp"
-    "src/library/database_logger.cc"
-    "src/library/pem_certificate_download.h"
-    "src/library/pem_certificate_download.cc"
+    "src/business_logic.h"
+    "src/business_logic.cc"
+    "src/grpc_mock_server_library.h"
+    "src/grpc_mock_server_library.cpp"
+    "src/database_logger.cc"
+    "src/pem_certificate_download.h"
+    "src/pem_certificate_download.cc"
     ${BACKEND_STUB_SRCS}
     ${BACKEND_STUB_HDRS}
     ${SWAGGER_PROTO_SRCS}

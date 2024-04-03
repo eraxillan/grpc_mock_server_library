@@ -8,7 +8,6 @@
     "grpc",
     "protobuf",
     "spdlog",
-    "python3",
     "cmakerc",
     "sqlitecpp",
     "pugixml",
